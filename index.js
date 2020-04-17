@@ -201,19 +201,26 @@ const artists = [
     }
 ]
 
-// 🖌🖼 M V P 🖼🖌 //
-
+//  M V P  //
 /* Task 1: Practice accessing data above by console.log-ing following items:
-
 (1) Name of the first artist in the array
 (2) Bio of the third artist in the array */
-
-
-
-/* Task 2: There is a typo in your dataset 😱 The 9th artist, Vincent Van Gogh is currently Vincent Van Dough. Use an array method to fix this issue and console.log() to check your work. */
-
-
-
+// console.log(artists[0]);
+//  console.log(artists[2]);
+/* Task 2: There is a typo in your dataset  The 9th artist, Vincent Van Gogh is currently Vincent Van Dough. Use an array method to fix this issue and console.log() to check your work. */
+artists.splice(8,1, 
+  {
+  "id": 8,
+  "name": "Vincent Van Gogh",
+  "years": "1853 – 1890",
+  "genre": "Post-Impressionism",
+  "nationality": "Dutch",
+  "bio": "Vincent Willem van Gogh (Dutch: [ˈvɪnsɛnt ˈʋɪləm vɑŋ ˈɣɔx] (listen); 30 March 1853 – 29 July 1890) was a Dutch Post-Impressionist painter who is among the most famous and influential figures in the history of Western art. In just over a decade he created about 2,100 artworks, including around 860 oil paintings, most of them in the last two years of his life. They include landscapes, still lifes, portraits and self-portraits, and are characterised by bold colours and dramatic, impulsive and expressive brushwork that contributed to the foundations of modern art. However, he was not commercially successful, and his suicide at 37 followed years of mental illness and poverty.",
+  "wikipedia": "http://en.wikipedia.org/wiki/Vincent_van_Gogh",
+  "paintings": 877
+}
+);
+// console.log(artists[8]);
 /* Task 3: Create a function called `getArtistByIndex` that takes two arguments:
  *     (1) artists array
  *     (2) a number which is the desired index in the array.
@@ -224,11 +231,14 @@ const artists = [
 */
 function getArtistByIndex(id, name) {
     /* code here */
+    for(i=0; i<name.length; i++){
+      if(i===id)
+      return `The artist at index 0 is ${name[i].name}`;
+      }
   }
   
+  // console.log(getArtistByIndex(0,artists));
   /**
-
-
 /* Task 4: Create a function called `removeArtist` that takes two arguments:
  *     (1) artists array
  *     (2) a number which is the desired index in the array.
@@ -237,53 +247,71 @@ function getArtistByIndex(id, name) {
  * For example, if removeArtist is invoked with the data and the number 0,
  * it will remove Amedeo Modigliani from our dataset.
 */
-function removeArtist(/*code here*/) {
-    /* code here */
-  }
-  
+function removeArtist(artistArray,index){
+  /* code here */
+  for(i=0; i<artistArray.length; i++){
+   if(i===index){
+   artistArray.splice(i,1);
+   return artistArray;
+ }
+ }
+ }
+ // console.log(removeArtist(artists,1));
   /**
-
-
 /* Task 5: Create a function called get20s() that takes data as an argument and returns an array with names of artists who were born the 20th century (1800-1900) */
-
-function get20s(/* Code here */){
-
-    /* Code here */
-
-  }
-
+function get20s(data/* Code here */){
+  /* Code here */
+//  const newArray=[];
+// if(1799<data<1901){
+// newArray.push(newArray[i].years)
+// return newArray;
+// }
+//     }
+//   }
+// console.log(get20s(1800));
 /* Task 6: Create a function called lotsOfArt() that takes artists as an argument and returns an array with names of artists who painted more than 100 paintings */
-
-function lotsOfArt(/* Code here */){
-
-    /* Code here */
-
+function lotsOfArt(arr/* Code here */){
+  /* Code here */
+  const newArray=[];
+  for(i=0; i<arr.length; i++){
+if(arr[i].paintings>=100){
+newArray.push(arr[i].name);
+} 
   }
-
-
-/* Task 7: Create a function called `addArtist` that can accept an array of information and add it to the artists array. Then, Add a 21st artist to the array (you) with custom information! 👩‍🎨👨‍🎨
-
+ return newArray;
+}
+// console.log(lotsOfArt(artists));
+/* Task 7: Create a function called `addArtist` that can accept an array of information and add it to the artists array. Then, Add a 21st artist to the array (you) with custom information! 
 id: 21
 name: Your Name Here, 
 years: Your Birth Year - current day,
 genre: Web Design, 
 nationality: Your Nationality Here
 bio: Add 1-2 sentences (or use lorem ipsum) "*/
-
-function addArtist(/* Code here */){
-
-    /* Code here */
-
-  }
-
-
+function addArtist(arr/* Code here */){
+  /* Code here */
+const object={
+id: 50,
+name: 'Moj Francus', 
+years: 'Your Birth Year - current day',
+genre: 'Web Design', 
+nationality: 'Your Nationality Here',
+bio: 'Add 1-2 sentences (or use lorem ipsum)'
+}
+arr.push(object);
+return  arr;
+}
+// console.log(addArtist(artists));
 /* Task 8: Create a function called `checkArtist` that accepts a string (name of an artist) and checks if that artist is in the dataset. */
-
-function checkArtist(/* Code here */){
-
-    /* Code here */
-
-  }
+function checkArtist(stringName/* Code here */){
+  /* Code here */
+for(i=0; i<artists.length; i++){
+if(artists[i].name===stringName){
+return true + artists[i].name;
+}
+}
+}
+// console.log(checkArtist('El Greco'));
 
 
 
@@ -325,6 +353,7 @@ function randomize(/* Code here */){
     /* Code here */
 
   }
+}
 
 
  /* STRETCH 3: Use advanced array methods (.map, .reduce, .filer) to refactor your MVP code (create an array of all artists born in the 1900s with .filter, for example) */
